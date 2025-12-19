@@ -65,4 +65,41 @@ Un réseau de neurones est entraîné sur des milliards de phrases pour prédire
 * **Note :** C'est un embedding *statique*. Le mot "avocat" aura le même vecteur, qu'on parle du fruit ou du métier.
 
 ### 📍 Où l'utiliser ?
-*
+* **Systèmes de recommandation avancés :** Suggérer des produits similaires (sémantiquement proches).
+* **Recherche de synonymes :** Trouver des mots alternatifs.
+* **Pré-traitement pour Deep Learning :** Nourrir des modèles plus complexes (LSTM, CNN).
+
+---
+
+## 4. BERT (Contextual Embeddings)
+**"L'Intelligence Contextuelle"**
+
+### 🎯 Rôle
+L'état de l'art actuel (basé sur les Transformers). Contrairement à Word2Vec, BERT génère des vecteurs qui changent selon le **contexte** de la phrase. Il ne lit pas mot par mot, mais analyse toute la phrase d'un coup.
+
+### ❓ Pourquoi l'utiliser ?
+* **Polysémie (Mots à double sens) :**
+    * Phrase A : "Je mange un **avocat**."
+    * Phrase B : "J'ai appelé mon **avocat**."
+    * *Word2Vec* donne le même vecteur pour "avocat". *BERT* donne deux vecteurs totalement différents car il comprend le contexte.
+* **Compréhension profonde :** Il saisit la négation, l'ironie et les relations complexes entre les mots.
+
+### ⚙️ Comment ça marche ?
+Il utilise le mécanisme d'**Attention**. Le modèle regarde chaque mot et calcule son lien avec *tous* les autres mots de la phrase simultanément. Il est pré-entraîné sur le web entier (Wikipedia, Livres) en jouant à des jeux de "texte à trous" (Masked Language Modeling).
+
+### 📍 Où l'utiliser ?
+* **Moteurs de recherche modernes (Google) :** Pour comprendre l'intention derrière une requête complexe ("changer pneu voiture prix").
+* **Chatbots & Assistants (IA Générative) :** Comprendre et répondre humainement.
+* **Analyse de sentiments complexe :** Distinguer "Pas mal du tout" (positif) de "Pas mal, mais..." (mitigé).
+* **Traduction automatique.**
+
+---
+
+## Résumé Comparatif
+
+| Technique | Type | Comprend le sens ? | Comprend le contexte ? | Complexité |
+| :--- | :--- | :--- | :--- | :--- |
+| **Bag of Words** | Comptage | Non | Non | Très Faible |
+| **TF-IDF** | Pondération | Non (mais filtre le bruit) | Non | Faible |
+| **Word2Vec** | Embedding Statique | **Oui** (mots isolés) | Non (1 mot = 1 vecteur) | Moyenne |
+| **BERT** | Embedding Dynamique | **Oui** (phrase entière) | **Oui** (s'adapte au contexte) | Élevée (GPU requis) |
